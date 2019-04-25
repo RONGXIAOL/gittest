@@ -24,16 +24,14 @@ api = tweepy.API(auth)
 # for friend in user.friends():
 #    print(friend.screen_name)
 
-
-# This listener will print out all Tweets it receives
 class PrintListener(tweepy.StreamListener):
     def on_data(self, data):
         # Decode the JSON data
         tweet = json.loads(data)
         print(tweet)
         print()
-        # Print out the Tweet
-        # print('@%s: %s' % (tweet['user']['screen_name'], tweet['text'].encode('ascii', 'ignore')))
+        Print out the Tweet
+        print('@%s: %s' % (tweet['user']['screen_name'], tweet['text'].encode('ascii', 'ignore')))
 
     def on_error(self, status):
         print(status)
@@ -43,10 +41,8 @@ class PrintListener(tweepy.StreamListener):
 if __name__ == '__main__':
     listener = PrintListener()
 
-    # Show system message
     print('I will now print Tweets containing "Python"! ==>')
 
-    # Authenticate
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
 
@@ -56,6 +52,4 @@ if __name__ == '__main__':
     # syd = [150.52,-34.12,151.34,-33.58]
     # vic = [140.96,-39.18,144.04,-33.98,144.04,-39.16,149.98,-35.91]    
     stream.filter(locations=mel)
-
-
     # stream.filter(track=['apple'])
