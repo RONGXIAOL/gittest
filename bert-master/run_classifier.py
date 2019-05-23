@@ -249,13 +249,14 @@ class MyProcessor(DataProcessor):
 		examples = []
 		for _id in test_set:
 			claim = test_set[_id]["claim"]
+			label = "SUPPORTS"
 			# sents = " ".join(test_set[_id]["sents"])
 			sents = test_set[_id]["sents"]
 			for i in range(len(sents)):
 				guid = 'test-%s'%(_id+"-"+str(i))
 				text_a = tokenization.convert_to_unicode(sents[i])
 				text_b = tokenization.convert_to_unicode(claim)
-				examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b))
+				examples.append(InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
 		return examples
 
 	def get_labels(self):
